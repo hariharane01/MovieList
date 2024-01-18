@@ -1,0 +1,128 @@
+//app is core component
+//JSX - JS XML - converted to JS
+//JSX - babel will converted to JS
+
+//custom components
+// 1. first letter must be capital
+//2. it return a JSX element
+
+//{}- Template syntax
+//Hook - function 
+//usestate - const [state, setstate] = usestate(initial value)
+//state - current scenario
+//state of art technology
+//state of mind -
+
+
+Import and export
+it has two type
+1.named -- import and export
+2.default -- import and export
+
+
+function App() {
+  //JS Start
+  //const name = "Hari";
+  //const name1 = "aran";
+  //Array of string 
+  const people =["hari", "raja","arun", "surya","dhiva"]; 
+
+  //Array of object
+  const people1=[
+    { name: "dhoni" ,
+     pic: "https://wallpapercave.com/wp/wp6860301.jpg" 
+
+    },
+    {
+      name:"raina" ,
+      pic:"https://wallpapercave.com/wp/wp7468985.jpg"
+    },
+    {
+      name:"jadeja",
+        pic:"https://imgk.timesnownews.com/story/Jadeja_CSK_bcci_0.png"
+
+    }
+  
+  ]
+
+  //JS end
+
+                                                                                                //JSX Starts
+  return (
+    <div className="App">
+      {/* <Welcome name="hari" />
+      <Welcome name="harane" /> */}
+
+      {/* <Welcome name= {people[0]} />
+      <Welcome name= {people[2]} /> */}
+
+      {/* {people.map((personName) => (<Welcome name={people[0]}/>))}  */}
+
+      {/* {people.map((personName) => (<Welcome name={personName}/>))}  */}
+      {people1.map((usr) => (
+      <Msd name={usr.name} pic={usr.pic}/>
+      ))}
+      
+      {/* <Msd name="dhoni" 
+      pic="https://wallpapercave.com/wp/wp6860301.jpg" />
+      <Msd
+        
+      />
+      <Msd name="raina" 
+      pic="https://wallpapercave.com/wp/wp7468985.jpg" /> */}
+      {/* <h1>hello {name}</h1>
+      <h2>hello {name1}</h2> */}
+      {/* <Counter/> */}
+      
+      
+      
+      {/* <AddColor/> */}
+      <Book/>
+
+    </div>
+  );
+                                                                                                //JSX end
+}
+function Book(){
+  const book={
+    name:"LEO",
+    summary:"The film was officially announced in January 2023 under the tentative title Thalapathy 67, as it is Vijay's 67th film as a lead actor, and the official title was announced a few days later.",
+    rating:'9.5',
+    Poster:"https://assets.gadgets360cdn.com/pricee/assets/product/202303/Leo_1678967552.jpg"
+  };
+  return(
+    <div className='book-container'>
+      <img className='book-poster' src={book.Poster} ></img>
+      <div className='book-spec'>
+        <h2 className='book-name'>{book.name}</h2>
+        <p className='book-rating'>{book.rating}</p>
+      </div>
+      <p className='book-summary'>{book.summary}</p>
+    </div>
+
+  );
+}
+
+
+export default App;
+
+
+<div>
+<ul>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/movie'>Movie List </Link></li>
+        <li><Link to='/color-game'>Color Game </Link></li>
+        <li><Link to='/user'> User</Link></li>
+        <li><Link to="/somewhere">somewhere </Link></li>
+
+      </ul>
+       <Routes>
+          <Route path='/' element={<Home />}></Route>
+          <Route path='/movie' element={<MovieList movieList={movieList} setMovieList={setMovieList} />}></Route>
+          <Route path='/movie/:movieId' element={<MovieDetail movieList={movieList} />}></Route>
+          <Route path='/color-game' element={<AddColor />}></Route>
+          <Route path='/user' element={<UserList />}></Route>
+          <Route path='*' element={<NotFoundPage />}></Route>
+
+        </Routes>
+</div>
