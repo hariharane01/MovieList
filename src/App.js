@@ -75,7 +75,7 @@ const INITIAL_MOVIE_LIST = [
 
 
 export default function App() {
-  const [movieList, setMovieList] = useState(INITIAL_MOVIE_LIST);
+  const [movieList, setMovieList] = useState([]);
   const [mode, setMode] = useState("light");
   const navigate = useNavigate();
 
@@ -84,6 +84,12 @@ export default function App() {
     palette: {
       mode: mode,
     },
+  });
+
+  fetch("https://659fc8755023b02bfe8a7837.mockapi.io/movie")
+  .then((res) => res.json())
+  .then((data) => {
+    setMovieList(data);
   });
 
   return (
