@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Badge from '@mui/material/Badge';
 
 import IconButton from '@mui/material/IconButton';
@@ -10,12 +10,16 @@ export function Counter() {
   //let Like= 10;
   const [Like, setLike] = useState(0);
   const [dislike, setdislike] = useState(0);
+
+  useEffect(()=>{
+    console.log("like is updated", Like);
+  }, [Like]);
   return (
     <div>
       <IconButton aria-label="delete"
         onClick={() => {
           setLike(Like + 1);
-          console.log(Like);
+          //console.log(Like);
         }}>
         <Badge badgeContent={Like} color="primary">
           👍
