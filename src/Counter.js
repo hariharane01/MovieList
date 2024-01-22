@@ -12,8 +12,8 @@ export function Counter() {
   const [dislike, setdislike] = useState(0);
 
   useEffect(()=>{
-    console.log("like is updated", Like);
-  }, [Like]);
+    console.log("click  is updated", Like + dislike);
+  }, [Like, dislike]);
   return (
     <div>
       <IconButton aria-label="delete"
