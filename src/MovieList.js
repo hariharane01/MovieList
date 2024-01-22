@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Movie } from "./Movie";
+import { API } from "./global";
 
 export function MovieList() {
   //const movieList = INITIAL_MOVIE_LIST;
@@ -13,7 +14,7 @@ export function MovieList() {
   const [movieList, setMovieList] = useState([]);
 
   useEffect(() => {
-    fetch("https://659fc8755023b02bfe8a7837.mockapi.io/movie", {
+    fetch(`${API}/movie`, {
       method: "GET",
     })
       .then((res) => res.json())
@@ -25,7 +26,7 @@ export function MovieList() {
   return (
     <div>
       <div className="movie-list">
-        {movieList.map((mo, index) => (
+        {movieList.map((mo) => (
           <Movie key={mo.id} movie={mo} id={mo.id} />
         ))}
       </div>
