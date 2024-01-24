@@ -117,9 +117,9 @@ export default function App() {
               <Button color="inherit" onClick={() => navigate("/color-game")}>
                 Color Game
               </Button>
-              <Button color="inherit" onClick={() => navigate("/user")}>
+              {/* <Button color="inherit" onClick={() => navigate("/user")}>
                 User
-              </Button>
+              </Button> */}
               <Button
                 startIcon={
                   mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />
@@ -137,7 +137,7 @@ export default function App() {
           <Route path="/movie" element={<MovieList />}></Route>
           <Route path="/movie/:movieId" element={<MovieDetail />}></Route>
           <Route path="/color-game" element={<AddColor />}></Route>
-          <Route path="/user" element={<UserList />}></Route>
+          {/* <Route path="/user" element={<UserList />}></Route> */}
           <Route path="/flims" element={<Navigate replace to="/movie" />} />
           <Route path="/404" element={<NotFoundPage />}></Route>
           <Route path="*" element={<Navigate replace to="/404" />} />

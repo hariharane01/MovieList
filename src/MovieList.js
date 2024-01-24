@@ -34,7 +34,7 @@ export function MovieList() {
             id={mo.id}
             deleteButton={
               <IconButton color="primary" aria-label="deleteButton">
-                <DeleteIcon />
+                {/* <DeleteIcon /> */}
               </IconButton>
             }
           />
