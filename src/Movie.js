@@ -31,6 +31,9 @@ export function Movie({ movie, id }) {
       {show ? <p className='movie-summary'>{movie.summary}</p> : ""}
 
       <Counter />
+      
+ 
+
     </div>
 
   );

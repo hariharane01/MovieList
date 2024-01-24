@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Movie } from "./Movie";
 import { API } from "./global";
+import { IconButton } from "@mui/material";
 
 export function MovieList() {
   //const movieList = INITIAL_MOVIE_LIST;
@@ -25,9 +26,18 @@ export function MovieList() {
 
   return (
     <div>
-      <div className="movie-list">
+      <div className="movie-list  ">
         {movieList.map((mo) => (
-          <Movie key={mo.id} movie={mo} id={mo.id} />
+          <Movie
+            key={mo.id}
+            movie={mo}
+            id={mo.id}
+            deleteButton={
+              <IconButton color="primary" aria-label="deleteButton">
+                <DeleteIcon />
+              </IconButton>
+            }
+          />
         ))}
       </div>
     </div>
