@@ -14,7 +14,7 @@ export function MovieDetail() {
   // console.log(movieId)
 
   useEffect(() => {
-    fetch(`${API}movie/${movieId}`, {
+    fetch(`${API}/movie/${movieId}`, {
       method: "GET",
     })
       .then((res) => res.json())
