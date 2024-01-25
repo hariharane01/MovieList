@@ -1,5 +1,7 @@
 export function Home() {
   return (
-    <h1>Welcome to Movie List🎥</h1>
+    <div id="home">
+      <h1>🎥Welcome to Movie World🎥</h1>
+    </div>
   );
 }
