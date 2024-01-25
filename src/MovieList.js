@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Movie } from "./Movie";
 import { API } from "./global";
 import { IconButton } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export function MovieList() {
   //const movieList = INITIAL_MOVIE_LIST;
@@ -14,7 +15,17 @@ export function MovieList() {
 
   const [movieList, setMovieList] = useState([]);
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   fetch(`${API}/movie`, {
+  //     method: "GET",
+  //   })
+  //     .then((res) => res.json())
+  //     .then((mol) => {
+  //       setMovieList(mol);
+  //     });
+  // }, []);
+
+  const getMovies =() =>{
     fetch(`${API}/movie`, {
       method: "GET",
     })
@@ -22,7 +33,10 @@ export function MovieList() {
       .then((mol) => {
         setMovieList(mol);
       });
-  }, []);
+
+  };
+
+  useEffect(()=> getMovies(),[]);
 
   return (
     <div>
@@ -33,8 +47,18 @@ export function MovieList() {
             movie={mo}
             id={mo.id}
             deleteButton={
-              <IconButton color="primary" aria-label="deleteButton">
-                {/* <DeleteIcon /> */}
+              <IconButton
+                color="error"
+                aria-label="deleteButton"
+                onClick={() => {
+                  fetch(`${API}/movie/${mo.id}`, {
+                    method: "DELETE",
+                  }).then(()=> getMovies())
+                }}
+
+                 
+              >
+                <DeleteIcon />
               </IconButton>
             }
           />

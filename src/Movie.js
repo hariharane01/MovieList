@@ -6,7 +6,8 @@ import InfoIcon from '@mui/icons-material/Info';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 
 
-export function Movie({ movie, id }) {
+
+export function Movie({ movie, id, deleteButton }) {
   const navigate = useNavigate();
   const ratingStyles = {
     color: movie.rating >= 8 ? "green" : "red",
@@ -30,7 +31,7 @@ export function Movie({ movie, id }) {
       {/* <p style={summaryStyles} className='movie-summary'>{movie.summary}</p> */}
       {show ? <p className='movie-summary'>{movie.summary}</p> : ""}
 
-      <Counter />
+      <Counter /> {deleteButton}
       
  
 
