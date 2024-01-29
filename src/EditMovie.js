@@ -17,7 +17,7 @@ export function EditMovie() {
         setMovie(moe);
         // console.log(moe);
       });
-  }, []);
+  },[]);
 
   return movie ? <EditMovieForm movie={movie} /> : "Loading...";
 }
@@ -90,10 +90,6 @@ function EditMovieForm({ movie }) {
           })
             .then((data) => data.json())
             .then(navigate("/movie"));
-
-          //console.log(newMovie);
-          // setMovieList([...movieList, newMovie]);
-          // navigate('/movie');
         }}
       >
         Edit This Movie
