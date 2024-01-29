@@ -148,16 +148,9 @@ export default function App() {
               <AddMovie movieList={movieList} setMovieList={setMovieList} />
             }
           />
-           <Route
-        path="/movie/edit/:movieId" element={<EditMovie/>}
-        />
+          <Route path="/movie/edit/:movieId" element={<EditMovie />} />
         </Routes>
-
-       
       </div>
     </ThemeProvider>
   );
-
-
-  
 }
