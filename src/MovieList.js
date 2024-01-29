@@ -3,6 +3,9 @@ import { Movie } from "./Movie";
 import { API } from "./global";
 import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import { useNavigate } from "react-router-dom";
+
 
 export function MovieList() {
   //const movieList = INITIAL_MOVIE_LIST;
@@ -14,6 +17,8 @@ export function MovieList() {
   // const [trailer, setTrailer] = useState("");
 
   const [movieList, setMovieList] = useState([]);
+  const navigate = useNavigate();
+
 
   // useEffect(() => {
   //   fetch(`${API}/movie`, {
@@ -25,7 +30,7 @@ export function MovieList() {
   //     });
   // }, []);
 
-  const getMovies =() =>{
+  const getMovies = () => {
     fetch(`${API}/movie`, {
       method: "GET",
     })
@@ -33,10 +38,9 @@ export function MovieList() {
       .then((mol) => {
         setMovieList(mol);
       });
-
   };
 
-  useEffect(()=> getMovies(),[]);
+  useEffect(() => getMovies(), []);
 
   return (
     <div>
@@ -53,12 +57,19 @@ export function MovieList() {
                 onClick={() => {
                   fetch(`${API}/movie/${mo.id}`, {
                     method: "DELETE",
-                  }).then(()=> getMovies())
+                  }).then(() => getMovies());
                 }}
-
-                 
               >
                 <DeleteIcon />
+              </IconButton>
+            }
+            editButton={
+              <IconButton color="secondary" aria-label="editButton"
+              onClick={()=>{
+                navigate(`/movie/edit/${mo.id}`)
+              }}
+              >
+                <EditIcon />
               </IconButton>
             }
           />

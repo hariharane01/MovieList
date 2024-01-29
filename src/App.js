@@ -4,6 +4,7 @@ import { NotFoundPage } from "./NotFoundPage";
 import { Home } from "./Home";
 import { UserList } from "./UserList";
 import { MovieDetail } from "./MovieDetail";
+import { EditMovie } from "./EditMovie";
 
 //React component
 import { Routes, Route, Link, useNavigate, Navigate } from "react-router-dom";
@@ -147,8 +148,16 @@ export default function App() {
               <AddMovie movieList={movieList} setMovieList={setMovieList} />
             }
           />
+           <Route
+        path="/movie/edit/:movieId" element={<EditMovie/>}
+        />
         </Routes>
+
+       
       </div>
     </ThemeProvider>
   );
+
+
+  
 }
