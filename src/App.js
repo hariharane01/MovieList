@@ -21,6 +21,7 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import { AddMovie } from "./AddMovie";
 import { MovieList } from "./MovieList";
+import { BasicForm } from "./BasicForm";
 
 // const INITIAL_MOVIE_LIST = [
 //   {
@@ -114,6 +115,9 @@ export default function App() {
               <Button color="inherit" onClick={() => navigate("/movie/add")}>
                 Add Movie
               </Button>
+              <Button color="inherit" onClick={() => navigate("/form")}>
+                Form
+              </Button>
 
               <Button color="inherit" onClick={() => navigate("/color-game")}>
                 Color Game
@@ -148,9 +152,13 @@ export default function App() {
               <AddMovie movieList={movieList} setMovieList={setMovieList} />
             }
           />
+          <Route path="/form" element={<BasicForm/>} />
+
           <Route path="/movie/edit/:movieId" element={<EditMovie />} />
         </Routes>
       </div>
     </ThemeProvider>
   );
 }
+
+
