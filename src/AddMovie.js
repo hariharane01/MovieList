@@ -1,70 +1,121 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 import { API } from "./global";
+import { useFormik } from "formik";
+import * as yup from "yup";
 
-export function AddMovie({ movieList, setMovieList }) {
+const formValidationSchema = yup.object({
+  name: yup.string().required("Name is must"),
+  poster: yup.string().min(4),
+  rating: yup.number().min(0).max(10),
+  summary: yup.string().required("summary is must"),
+  trailer: yup.string().required("trailer is must"),
+});
+
+export function AddMovie() {
   const navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [poster, setPoster] = useState("");
-  const [rating, setRating] = useState("");
-  const [summary, setSummary] = useState("");
-  const [trailer, setTrailer] = useState("");
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      poster: "",
+      rating: "",
+      summary: "",
+      trailer: "",
+    },
+    validationSchema: formValidationSchema,
+    onSubmit: (newMovie) => {
+      // console.log("onsubmit", values);
+      createMovie(newMovie);
+    },
+  });
+  const createMovie = (newMovie) => {
+    console.log("createMovie", newMovie);
+  };
   return (
-    <div>
-      <div className='add-movie-form'>
-        <TextField variant='outlined' label="Name"
-          onChange={(event) => setName(event.target.value)}
-          type='text'
-          placeholder='enter name' />
-        <TextField variant='outlined' label="Poster"
-          onChange={(event) => setPoster(event.target.value)}
-          type='text'
-          placeholder='enter poster' />
-        <TextField variant='outlined' label="Rating"
-          onChange={(event) => setRating(event.target.value)}
-          type='text'
-          placeholder='enter rating' />
-        <TextField variant='outlined' label="Summary"
-          onChange={(event) => setSummary(event.target.value)}
-          type='text'
-          placeholder='enter summary' />
-        <TextField variant='outlined' label="Trailer"
-          onChange={(event) => setTrailer(event.target.value)}
-          type='text'
-          placeholder='enter Trailer' />
+    <form className="add-movie-form" onSubmit={formik.handleSubmit}>
+      <TextField
+        variant="outlined"
+        label="Name"
+        id="name"
+        name="name"
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.name}
+      />
+      {formik.touched.name && formik.errors.name ? formik.errors.name : ""}
+      <TextField
+        variant="outlined"
+        label="Poster"
+        id="poster"
+        name="poster"
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.poster}
+      />{" "}
+      {formik.touched.poster && formik.errors.poster
+        ? formik.errors.poster
+        : ""}
+      <TextField
+        variant="outlined"
+        label="Rating"
+        id="rating"
+        name="rating"
+        onChange={formik.handleChange}
+        value={formik.values.rating}
+        onBlur={formik.handleBlur}
+      />{" "}
+      {formik.touched.rating && formik.errors.rating
+        ? formik.errors.rating
+        : ""}
+      <TextField
+        variant="outlined"
+        label="Summary"
+        id="summary"
+        name="summary"
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.summary}
+      />{" "}
+      {formik.touched.summary && formik.errors.summary
+        ? formik.errors.summary
+        : ""}
+      <TextField
+        variant="outlined"
+        label="Trailer"
+        id="trailer"
+        name="trailer"
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.trailer}
+      />{" "}
+      {formik.touched.trailer && formik.errors.trailer
+        ? formik.errors.trailer
+        : ""}
+      <Button
+        type="submit"
+        variant="contained"
+        onClick={createMovie}
+        // onClick={() => {
+        //   const newMovie = {
+        //     // name: name,
+        //     // poster: poster,
+        //     // rating: rating,
+        //     // summary: summary,
+        //     // trailer: trailer,
+        //   };
 
-
-        <Button
-          variant="contained"
-          onClick={() => {
-            const newMovie = {
-              name: name,
-              poster: poster,
-              rating: rating,
-              summary: summary,
-              trailer: trailer,
-            };
-
-            fetch(`${API}/movie`, {
-              method: "POST",
-              body: JSON.stringify(newMovie),
-              headers: {"Content-Type":"application/json"},
-
-            }).then((data)=> data.json())
-            .then(navigate("/movie"));
-
-
-            //console.log(newMovie);
-            // setMovieList([...movieList, newMovie]);
-            // navigate('/movie');
-
-          }}>Add Movie </Button>
-      </div>
-    </div>
-
+        //   fetch(`${API}/movie`, {
+        //     method: "POST",
+        //     body: JSON.stringify(newMovie),
+        //     headers: { "Content-Type": "application/json" },
+        //   })
+        //     .then((data) => data.json())
+        //     .then(navigate("/movie"));
+        // }}
+      >
+        Add Movie{" "}
+      </Button>
+    </form>
   );
-
-
 }
