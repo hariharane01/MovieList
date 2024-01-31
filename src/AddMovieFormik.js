@@ -14,7 +14,7 @@ const formValidationSchema = yup.object().shape({
   trailer: yup.string().required("Required"),
 });
 
-export function AddMovie() {
+export function AddMovieFormik() {
   const navigate = useNavigate();
 
   const formik = useFormik({

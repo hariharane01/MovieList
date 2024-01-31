@@ -22,6 +22,7 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 import { AddMovie } from "./AddMovie";
 import { MovieList } from "./MovieList";
 import { BasicForm } from "./BasicForm";
+import {AddMovieFormik} from "./AddMovieFormik";
 
 // const INITIAL_MOVIE_LIST = [
 //   {
@@ -115,6 +116,9 @@ export default function App() {
               <Button color="inherit" onClick={() => navigate("/movie/add")}>
                 Add Movie
               </Button>
+              <Button color="inherit" onClick={() => navigate("/movie/add1")}>
+                Add Movie Formik
+              </Button>
               <Button color="inherit" onClick={() => navigate("/form")}>
                 Form
               </Button>
@@ -149,7 +153,13 @@ export default function App() {
           <Route
             path="/movie/add"
             element={
-              <AddMovie movieList={movieList} setMovieList={setMovieList} />
+              <AddMovie />
+            }
+          />
+          <Route
+            path="/movie/add1"
+            element={
+              <AddMovieFormik/>
             }
           />
           <Route path="/form" element={<BasicForm/>} />
