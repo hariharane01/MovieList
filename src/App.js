@@ -116,9 +116,9 @@ export default function App() {
               <Button color="inherit" onClick={() => navigate("/movie/add")}>
                 Add Movie
               </Button>
-              <Button color="inherit" onClick={() => navigate("/movie/add1")}>
+              {/* <Button color="inherit" onClick={() => navigate("/movie/add1")}>
                 Add Movie Formik
-              </Button>
+              </Button> */}
               <Button color="inherit" onClick={() => navigate("/form")}>
                 Form
               </Button>
@@ -156,12 +156,12 @@ export default function App() {
               <AddMovie />
             }
           />
-          <Route
+          {/* <Route
             path="/movie/add1"
             element={
               <AddMovieFormik/>
             }
-          />
+          /> */}
           <Route path="/form" element={<BasicForm/>} />
 
           <Route path="/movie/edit/:movieId" element={<EditMovie />} />

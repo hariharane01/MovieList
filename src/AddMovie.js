@@ -3,15 +3,14 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { API } from "./global";
 import { useFormik } from "formik";
-import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 
-const formValidationSchema = yup.object().shape({
-  name: yup.string().required("Required "),
+const formValidationSchema = yup.object({
+  name: yup.string().required("name was must "),
   poster: yup.string().min(4),
   rating: yup.number().min(0, "need higher rating").max(10, "rating is more"),
-  summary: yup.string().required(" Required"),
-  trailer: yup.string().required("Required"),
+  summary: yup.string().required("summary is must"),
+  trailer: yup.string().required("trailer is must"),
 });
 
 export function AddMovie() {
@@ -38,8 +37,8 @@ export function AddMovie() {
       body: JSON.stringify(newMovie),
       headers: { "Content-Type": "application/json" },
     })
-      .then((data) => data.json())
-      .then(() => navigate("/movie"));
+     // .then((data) => data.json())
+      .then(()=>navigate("/movie"));
     console.log(newMovie);
   };
   return (
