@@ -22,7 +22,8 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 import { AddMovie } from "./AddMovie";
 import { MovieList } from "./MovieList";
 import { BasicForm } from "./BasicForm";
-import {AddMovieFormik} from "./AddMovieFormik";
+// import {AddMovieFormik} from "./AddMovieFormik";
+import { API } from "./global";
 
 // const INITIAL_MOVIE_LIST = [
 //   {
@@ -93,7 +94,7 @@ export default function App() {
   });
 
   useEffect(() => {
-    fetch("https://659fc8755023b02bfe8a7837.mockapi.io/movie")
+    fetch(`${API}`)
       .then((res) => res.json())
       .then((data) => {
         setMovieList(data);
