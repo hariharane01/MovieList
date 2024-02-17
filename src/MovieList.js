@@ -49,7 +49,7 @@ export function MovieList() {
           <Movie
             key={mo.id}
             movie={mo}
-            id={mo.id}
+           
             deleteButton={
               <IconButton
                 color="error"

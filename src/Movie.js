@@ -20,7 +20,7 @@ export function Movie({ movie, id, deleteButton, editButton }) {
     <div className='movie-container'>
       <img className='movie-poster' src={movie.poster} alt={movie.name}></img>
       <div className='movie-spec'>
-        <h3 className='movie-name'>{movie.name} - {id}</h3>
+        <h3 className='movie-name'>{movie.name} </h3>
         <p style={ratingStyles} className='movie-rating'>{movie.rating}</p>
       </div>
       <IconButton color='primary' onClick={() => setShow(!show)}>
